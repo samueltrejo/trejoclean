@@ -10,6 +10,20 @@ import { ServicesComponent } from './components/services/services.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './components/footer/footer.component';
 
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { ReactiveFormsModule } from '@angular/forms';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDA1yAqWuXkBYJ5MnWCC7FXW8GfBLWIOuw",
+  authDomain: "trejoclean.firebaseapp.com",
+  projectId: "trejoclean",
+  storageBucket: "trejoclean.appspot.com",
+  messagingSenderId: "270399352084",
+  appId: "1:270399352084:web:1194915f974d451447a601",
+  measurementId: "G-ZB82Y0QQV7"
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +36,10 @@ import { FooterComponent } from './components/footer/footer.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    provideFirebaseApp(() => initializeApp(firebaseConfig)),
+    provideFirestore(() => getFirestore())
   ],
   providers: [],
   bootstrap: [AppComponent]
